@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dashboard</title>		
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet" media="screen">
+		<link href="{{ url_for('static', filename='js/materialize.js') }}" rel="stylesheet" media="screen">		
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+		<link rel='stylesheet' href='https://unpkg.com/emoji.css/dist/emoji.min.css'>
+		
+		<style type="text/css">
+			.nav-wrapper{
+				background: rgb(0, 0, 0) ;		
+			}
+			.center-cols > .col {
+			  float:none;
+			  display: inline-block;
+			  text-align: initial;
+			}
+		</style>
+	</head>
+	<body class="black">
+		<nav>
+		<div class="nav-wrapper">
+		  <a class="brand-logo center"><span class="light-blue-text text-darken-4">Real Time Covid-19</span></a>
+		</div>
+		</nav>
+		<div class="row center-align" style="margin-top:20px">
+	      <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Cases in India</span>
+			          <h2><span class="num">{{ total }}</span></h2>
+			        </div>
+			      </div>
+          </div>
+          <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Active Cases in India</span>
+			          <h2><span class="num">{{ total-discharged-deaths }}</span></h2>
+			        </div>
+			      </div>
+          </div>
+          <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Indian Cases</span>
+			          <h2><span class="num">{{ confirmedCasesIndian }}</span></h2>
+			        </div>
+			      </div>
+          </div>
+          <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Foriegn Cases</span>
+			          <h2><span class="num">{{ confirmedCasesForeign }}</span></h2>
+			        </div>
+			      </div>
+	      </div>
+	      <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Cured in India</span>
+			          <h2><span class="num">{{ discharged }}</span></h2>
+			        </div>
+			      </div>
+	      </div>
+	      <div class="col s12 m4">
+			<div class="card grey darken-4">
+			        <div class="card-content white-text">
+			          <span class="card-title">Total Deaths in India</span>
+			          <h2><span class="num">{{ deaths }}</span></h2>
+			        </div>
+			      </div>
+	      </div>
+        </div>
+<div>
+    <div class="row center-align">
+        <div class="col s12 m4 chart-container">
+          <div class="card grey darken-4">
+                  <div class="card-content white-text">
+                    <span class="card-title">State Wise Cases in India</span>
+                            <canvas id="cases_chart" width="1000" height="1000"></canvas>
+                  </div>
+                </div>
+            </div>
+        <div class="col s12 m4 chart-container">
+          <div class="card grey darken-4">
+                  <div class="card-content white-text">
+                    <span class="card-title">State Wise Recovery in India</span>
+                            <canvas id="discharged_chart" width="1000" height="1000"></canvas>
+                  </div>
+                </div>
+            </div>
+        <div class="col s12 m4 chart-container">
+          <div class="card grey darken-4">
+                  <div class="card-content white-text">
+                    <span class="card-title">State Wise Deaths in India</span>
+                            <canvas id="deaths_chart" width="1000" height="1000"></canvas>
+                  </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<footer class="page-footer black darken-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m6">
+                <h5 class="white-text center-align">Data Sources</h5>
+                <ul>
+                	<li>RealTime Data: <a href="https://www.mohfw.gov.in/" target="_blank">Ministry of Health and Family Welfare</a></li>
+                </ul>
+              </div>
+              <div class="col s12 m6">
+                <h5 class="white-text center-align">Be Safe!</h5>
+                <ul>
+                    <li>Practice Social Distancing<span class="ec ec-raising-hand-woman"></span></li>
+                    <li>Wash your hands Regurly.<span class="ec ec-wave"></span></a></li>
+                    <li>Made with <span class='ec ec-sparkling-heart'></span> by Mayank Jha</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+</footer>
+</body>
+<script type="text/javascript">
+    $('.num').each(function () {
+  var $this = $(this);
+  jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
+    duration: 2000,
+    easing: 'swing',
+    step: function () {
+      $this.text(Math.ceil(this.Counter));
+    }
+  });
+});
+</script>
+<script>
+    var ctx = document.getElementById('cases_chart');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: {{ statelist|tojson }},
+            datasets: [{
+                label: 'number of cases',
+                data: {{ confirmcases|tojson }},
+                backgroundColor:"white",
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend: {
+                display: true
+            }
+        }
+    });
+    </script>
+    <script>
+        var ctx = document.getElementById('discharged_chart');
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: {{ statelist|tojson }},
+                datasets: [{
+                    label: 'number of people recovered',
+                    data: {{ dischargedcases|tojson }},
+                    backgroundColor:"white",
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: true
+                }
+            }
+        });
+        </script>
+        <script>
+            var ctx = document.getElementById('deaths_chart');
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: {{ statelist|tojson }},
+                    datasets: [{
+                        label: 'number of deaths',
+                        data: {{ deathcases|tojson }},
+                        backgroundColor:"white",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: true
+                    }
+                }
+            });
+            </script>
