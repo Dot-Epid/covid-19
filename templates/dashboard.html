@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Dashboard</title>		
+		<title>Statistics</title>		
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon/favicon.ico') }}" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet" media="screen">
@@ -26,7 +26,10 @@
 	<body class="black">
 		<nav>
 		<div class="nav-wrapper">
-		  <a class="brand-logo center"><span class="light-blue-text text-darken-4">Real Time Covid-19</span></a>
+      <a class="brand-logo center"><span class="light-blue-text text-darken-4">Statistics</span></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="https://coviddashboard.azurewebsites.net">Home</a></li>
+      </ul>
 		</div>
 		</nav>
 		<div class="row center-align" style="margin-top:20px">
