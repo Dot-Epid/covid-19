@@ -1,4 +1,6 @@
 **covid-19
+Install APK from our github account for Android App
+Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.
 
 We have made a Webapp and Android app
 
@@ -20,7 +22,7 @@ Source:https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention
 
 A link for further updates regarding coronavirus has been provided: Source:https://www.mohfw.gov.in/
 
- **Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.
+ Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.
  
  MOBILE APP
  
@@ -38,4 +40,4 @@ Questions that a majority of people have in mind have been answered.
 Source:https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Fprepare%2Fprevention.html
  8. Test centres for Coronavirus with Direction.
 A complete list for test centres for coronavirus, along with the exact location and directions have been provided
-
+ 
