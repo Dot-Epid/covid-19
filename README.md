@@ -1,6 +1,6 @@
-**covid-19
-Install APK from our github account for Android App
-Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.
+**covid-19**
+**Install APK from our github account for Android App**
+**Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.**
 
 We have made a Webapp and Android app
 
