@@ -1,6 +1,6 @@
 **covid-19**
 
-**Install APK from our github account for Android App https://github.com/dotquestionmark/covid-19/blob/master/app-debug.apk **
+**Install APK from our github account for Android App https://github.com/dotquestionmark/covid-19/blob/master/app-debug.apk**
 
 **Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.**
 
