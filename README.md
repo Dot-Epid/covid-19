@@ -22,3 +22,21 @@ A link for further updates regarding coronavirus has been provided: Source:https
 
  **Here is our Webapp Link https://coviddashboard.azurewebsites.net which is deployed in azure.
  
+ MOBILE APP
+ 
+ 1. Details of essential nearby places:
+The user ratings, timings for opening and closing, images, directions to reach the place and the map view are displayed.
+2. Real time data is provided
+country wise statistics are provided, displaying the number of new cases, deaths, total cases and number of people recovered.
+3. Symptom checker:
+A method to detect how likely a person may have coronavirus, according to his symptoms has been made.
+4. Frequently Asked Questions (FAQ's) are displayed:
+Questions that a majority of people have in mind have been answered. HTML and CSS have been used for making the webpage
+5. Link for Donation: A method to donate through UPI has been created for online donation.
+Source:https://www.pmindia.gov.in/en/pm-cares/
+6. Helpline Numbers have been provided: Central helpline numbers and helpline numbers for states and union territories have been provided. HTML and CSS have been used for making the webpage.
+7. Steps for Precautions: Precautions that a person should take have been listed.
+Source:https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Fprepare%2Fprevention.html
+ 8. Test centres for Coronavirus
+A complete list for test centres for coronavirus, along with the exact location and directions have been provided
+
